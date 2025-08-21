@@ -170,19 +170,20 @@ To save and close file, pres escape then :wq
 You can type ls to show new file thathas been created
 ![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/e289665294bc6603898c9cf9c0a45246cf5d3880/LAMP_Stack/Images/Picture17.png)
 
-3. Enable the new virtual host
+3. Disable Apache's default website 
+
+```Bash
+sudo a2dissite 000-default
+```
+![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/e289665294bc6603898c9cf9c0a45246cf5d3880/LAMP_Stack/Images/Picture14.png)
+
+4. Enable the new virtual host 
 
 ```Bash
 sudo a2ensite projectlamp
 ```
 ![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/e289665294bc6603898c9cf9c0a45246cf5d3880/LAMP_Stack/Images/Picture16.png)
 
-4. Disable Apache's default website 
-
-```Bash
-sudo a2dissite 000-default
-```
-![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/e289665294bc6603898c9cf9c0a45246cf5d3880/LAMP_Stack/Images/Picture14.png)
 
 5. Check for errors in config file
 
@@ -196,6 +197,11 @@ sudo apache2ctl configtest
 ```Bash
 sudo systemctl reload apache2
 ```
+
+7. Test virtual host works
+- create an index.html in the web root var/www/project lamp
+
+add code
 
 7. Open browser
 
