@@ -49,5 +49,60 @@ curl http://localhost:80
 4. We just made apache web service respond to curl command with some payload
 
 
+
 ---
 
+## Step 2) Install and configure MySQL
+
+1. Install MySQL
+
+```Bash
+Sudo apt mysql-server
+```
+
+2. Login to MySQL console
+Once the installation finished, log in to MySQL console by typing
+
+```Bash
+Sudo mysql
+```
+This will allow you to navigate the console as the adminstrator user root
+
+3. Set password for the root user
+
+```Bash
+ALTER USER 'roo'@'localhost' IDENTIFIED WITH mysql_native_password BY'*****';
+```
+
+4. Exit MySQL shell
+
+```Bash
+mysql> exit
+```
+
+5. Configured the Validate Password plugin
+
+```Bash
+sudo mysql_secure_installation
+```
+
+This goes through a series of steps to validate your password. It will prompt you to:
+- change root password
+- remove anonymous users 
+- Remove the test database
+- Disable remote root logins
+
+6. Test login
+
+Once you're finished with the validation process, test if you're able to login
+
+```Bash
+Sudo mysql -p
+```
+It will prompt you for the password of the root user
+
+
+
+once you've checked, your MySQL server is now installed and secured
+
+---
