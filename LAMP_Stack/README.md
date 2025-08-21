@@ -152,7 +152,7 @@ To test your setup with a PHP script, you can setup a Apache Virtual Host to hol
 1. Create a directory for your website and change ownership of directory
 
 ```Bash 
-sudo mkdit /var/www/projectlamp
+sudo mkdir /var/www/projectlamp
 sudo chown -R $user:$USER /var/www/projectlamp
 ```
 ![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/e289665294bc6603898c9cf9c0a45246cf5d3880/LAMP_Stack/Images/Picture19.png)
@@ -215,8 +215,10 @@ sudo vim /etc/apache2/mods-enabled/dir.conf
 ```
 current order:
 
+![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/551ca6d895bb8c4c302ea301661261f666a047c3/LAMP_Stack/Images/Picture23.png)
 
 change order:
+![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/551ca6d895bb8c4c302ea301661261f666a047c3/LAMP_Stack/Images/Picture22.png)
 
 2. reload Apache so the changes can take effect
 
@@ -234,8 +236,8 @@ phpinfo() ;
 
 If you can see the following in your browser, the php installation has been successfully installed
 
-- This page provide information about your server fro mthe perspective of PHP. It is usefull for debugging and to ensure that your setting are being applied correctly
-
+- This page provide information about your server from the perspective of PHP. It is usefull for debugging and to ensure that your setting are being applied correctly
+![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/551ca6d895bb8c4c302ea301661261f666a047c3/LAMP_Stack/Images/Picture21.png)
 
 5. Remove index.php. file
 
