@@ -19,7 +19,7 @@ Allow the following inbound rules:
 - Port 80/TCP
 - Port 443/TCP
 - Port 22/TCP
-
+![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/e289665294bc6603898c9cf9c0a45246cf5d3880/LAMP_Stack/Images/Picture1.png)
 ---
 
 ## Step 2) Install and Configure Apache2
@@ -31,26 +31,33 @@ Apache is installed to serve your content
 sudo apt update
 sudo apt install apache2
 ```
-
-
+![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/e289665294bc6603898c9cf9c0a45246cf5d3880/LAMP_Stack/Images/Picture3.png)
 
 2. See if Apache2 is running
 
 ```Bash
 sudo apt systemctl status apache2
 ```
+![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/e289665294bc6603898c9cf9c0a45246cf5d3880/LAMP_Stack/Images/Picture2.png)
 
-3. Use the curl command to verify that Apache is running.
+**3. Use the curl command to verify that Apache is running.**
 
 The server is now running and can be tested from the local machine using the curl command to send a request to localhost.
 
 ```Bash
 curl http://localhost:80
 ```
+![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/e289665294bc6603898c9cf9c0a45246cf5d3880/LAMP_Stack/Images/Picture10.png)
 
-4. We just made apache web service respond to curl command with some payload
+ We just made apache web service respond to curl command with some payload
 
+![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/e289665294bc6603898c9cf9c0a45246cf5d3880/LAMP_Stack/Images/Picture11.png)
 
+4. Type into web browser 
+
+![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/e289665294bc6603898c9cf9c0a45246cf5d3880/LAMP_Stack/Images/Picture9.png)
+
+Apache had been successfully installed
 
 ---
 
@@ -75,8 +82,9 @@ This will allow you to navigate the console as the adminstrator user root
 3. Set password for the root user
 
 ```Bash
-ALTER USER 'roo'@'localhost' IDENTIFIED WITH mysql_native_password BY'*****';
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY'*****';
 ```
+![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/e289665294bc6603898c9cf9c0a45246cf5d3880/LAMP_Stack/Images/Picture8.png)
 
 4. Exit MySQL shell
 
@@ -89,6 +97,7 @@ mysql> exit
 ```Bash
 sudo mysql_secure_installation
 ```
+![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/e289665294bc6603898c9cf9c0a45246cf5d3880/LAMP_Stack/Images/Picture7.png)
 
 This goes through a series of steps to validate your password. It will prompt you to:
 - change root password
@@ -146,38 +155,41 @@ To test your setup with a PHP script, you can setup a Apache Virtual Host to hol
 sudo mkdit /var/www/projectlamp
 sudo chown -R $user:$USER /var/www/projectlamp
 ```
+![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/e289665294bc6603898c9cf9c0a45246cf5d3880/LAMP_Stack/Images/Picture19.png)
 
 2) create a new configuration file in Apache's sites-available directory
 
 ```Bash
 sudo vi /etc/apache2/sites-available/projectlamp.conf
 ```
-
 Click i and insert the following text below
-
+![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/e289665294bc6603898c9cf9c0a45246cf5d3880/LAMP_Stack/Images/Picture13.png)
 
 To save and close file, pres escape then :wq
 
-New file has been created
-
+You can type ls to show new file thathas been created
+![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/e289665294bc6603898c9cf9c0a45246cf5d3880/LAMP_Stack/Images/Picture17.png)
 
 3. Enable the new virtual host
 
 ```Bash
 sudo a2ensite projectlamp
 ```
+![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/e289665294bc6603898c9cf9c0a45246cf5d3880/LAMP_Stack/Images/Picture16.png)
 
 4. Disable Apache's default website 
 
 ```Bash
 sudo a2dissite 000-default
 ```
+![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/e289665294bc6603898c9cf9c0a45246cf5d3880/LAMP_Stack/Images/Picture14.png)
 
 5. Check for errors in config file
 
 ```Bash
 sudo apache2ctl configtest
 ```
+![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/e289665294bc6603898c9cf9c0a45246cf5d3880/LAMP_Stack/Images/Picture12.png)
 
 6. Reload Apache for changes to take intp effect
 
@@ -229,6 +241,7 @@ If you can see the following in your browser, the php installation has been succ
 
 After checking the relevant information about you PHP server, it is best to remove the file you created as it contains sensitive information about you php environment and your ubuntu server
 
+![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/e289665294bc6603898c9cf9c0a45246cf5d3880/LAMP_Stack/Images/Picture20.png) 
 
 
 
