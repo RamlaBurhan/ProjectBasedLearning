@@ -205,8 +205,9 @@ add code
 
 7. Open browser
 
-if your browser opens, it means your Apache virtual host is working
+If your browser opens, it means your Apache virtual host is working
 
+![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/641bc8e2834cf4e6a89696bf8eda74e2d9837ac9/LAMP_Stack/Images/Picture25.png)
 
 --- 
 
