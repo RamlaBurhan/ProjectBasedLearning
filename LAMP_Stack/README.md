@@ -165,6 +165,7 @@ Click i and insert the following text below
 To save and close file, pres escape then :wq
 
 You can type ls to show new file thathas been created
+
 ![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/e289665294bc6603898c9cf9c0a45246cf5d3880/LAMP_Stack/Images/Picture17.png)
 
 3. Disable Apache's default website 
@@ -225,6 +226,7 @@ current order:
 ![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/551ca6d895bb8c4c302ea301661261f666a047c3/LAMP_Stack/Images/Picture23.png)
 
 change order:
+
 ![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/551ca6d895bb8c4c302ea301661261f666a047c3/LAMP_Stack/Images/Picture22.png)
 
 2. reload Apache so the changes can take effect
