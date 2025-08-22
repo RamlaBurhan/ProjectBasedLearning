@@ -14,7 +14,7 @@ This project provides a step-by-step guide to installing configuring, and integr
 
 ## Step 1) Launch EC2 Instance
 
-1. Check security groups
+1. Check security groups.
 Allow the following inbound rules:
 - Port 80/TCP
 - Port 443/TCP
@@ -24,9 +24,9 @@ Allow the following inbound rules:
 
 ## Step 2) Install and Configure Apache2
 
-Apache is installed to serve your content
+Apache2 is installed to serve your content
 
-1. update all software and install apache2
+1. Update all software and install apache2
 ```Bash
 sudo apt update
 sudo apt install apache2
@@ -49,7 +49,7 @@ curl http://localhost:80
 ```
 ![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/e289665294bc6603898c9cf9c0a45246cf5d3880/LAMP_Stack/Images/Picture10.png)
 
- We just made apache web service respond to curl command with some payload
+Apache2 web service responds to the curl command with some payload
 
 ![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/e289665294bc6603898c9cf9c0a45246cf5d3880/LAMP_Stack/Images/Picture11.png)
 
@@ -115,7 +115,6 @@ Sudo mysql -p
 It will prompt you for the password of the root user
 
 
-
 once you've checked, your MySQL server is now installed and secured
 
 ---
@@ -139,15 +138,13 @@ You can run the following command to confirm your PHP version
 php -v
 ```
 
-
-
 ## You have succesfully installed your lampstack and it is fully operational
 
 To test your setup with a PHP script, you can setup a Apache Virtual Host to hold your website's files and folders. Virtual hosts allow you to have multiple website located on a single machine. 
 
 ---
 
-## Step 4) Create a virtual host for your website usimg Apache
+## Step 4) Create a virtual host for your website usimg Apache2
 
 1. Create a directory for your website and change ownership of directory
 
@@ -157,7 +154,7 @@ sudo chown -R $user:$USER /var/www/projectlamp
 ```
 ![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/e289665294bc6603898c9cf9c0a45246cf5d3880/LAMP_Stack/Images/Picture19.png)
 
-2) create a new configuration file in Apache's sites-available directory
+2) Create a new configuration file in Apache's sites-available directory
 
 ```Bash
 sudo vi /etc/apache2/sites-available/projectlamp.conf
@@ -192,16 +189,19 @@ sudo apache2ctl configtest
 ```
 ![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/e289665294bc6603898c9cf9c0a45246cf5d3880/LAMP_Stack/Images/Picture12.png)
 
-6. Reload Apache for changes to take intp effect
+6. Reload Apache for changes to take into effect
 
 ```Bash
 sudo systemctl reload apache2
 ```
 
 7. Test virtual host works
-- create an index.html in the web root var/www/project lamp
+- Create an index.html in the web root var/www/project lamp
 
-add code
+Type into the commandline:
+```
+sudo sh -c "echo 'Hello LAMP from hostname' $(TOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token/" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"` && curl -H "X-aws-ec2-metadata-token: $TOKEN" -s http://169.254.169.254/latest/meta-data/public-hostname) 'with public IP' $(TOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token/" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"` && curl -H "X-aws-ec2-metadata-token: $TOKEN" -s http://169.254.169.254/latest/meta-data/public-ipv4) > /var/www/projectlamp/index.html
+```
 
 7. Open browser
 
@@ -215,7 +215,7 @@ If your browser opens, it means your Apache virtual host is working
 
 1. With the default DirectoryIndex settings on Apache, a file name index.html will always take precedence ove and index.php file.
 
-if you want to change the behaviour you'll need to edit  the /etc/apache2/mods-enabled/dir.conf file and change the order in which the indec.php file is listed with then DirectoryIndex directive
+If you want to change the behaviour, you'll need to edit  the /etc/apache2/mods-enabled/dir.conf file and change the order in which the indec.php file is listed with then DirectoryIndex directive
 
 ```Bash
 sudo vim /etc/apache2/mods-enabled/dir.conf
@@ -229,24 +229,27 @@ change order:
 
 2. reload Apache so the changes can take effect
 
+```Bash
+sudo systemctl reload apache2
+```
 
-3. create a new file and add a valid php code
+3. create a new index.php file
 
 ```Bash
 vim /var/www/projectlamp/index.php
 ```
-
+- Add a valid PHP code
 <?php
 phpinfo() ;
 
 4. Check PHP installation has worked
 
 If you can see the following in your browser, the php installation has been successfully installed
-
-- This page provide information about your server from the perspective of PHP. It is usefull for debugging and to ensure that your setting are being applied correctly
 ![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/551ca6d895bb8c4c302ea301661261f666a047c3/LAMP_Stack/Images/Picture21.png)
 
-5. Remove index.php. file
+- This page provide information about your server from the perspective of PHP. It is usefull for debugging and to ensure that your setting are being applied correctly
+
+5. Remove index.php file
 
 After checking the relevant information about you PHP server, it is best to remove the file you created as it contains sensitive information about you php environment and your ubuntu server
 
