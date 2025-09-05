@@ -211,3 +211,114 @@ http://<Public-IP-Address>:80
 
 ## Step 6) Testing PHP with Nginx
 
+validate that Nginx can correctly hand .php files off to your PHP processor
+
+1. create a test info.php file
+
+```Bash
+vi /var/www/projectLEMP/info.php
+```
+
+paste the following in the document
+<?php
+phpinfo();>
+
+2. Acces page via web browser
+
+3. Once checked, remove the info.php file
+
+```Bash
+Sudo rm /var/www/54.83.127.210/info.php
+```
+
+## Step 7) Retrieving data from MySQL database with PHP
+
+I created a test database (DB) with simple ''To do list'' and configured access to it, so the Nginx website would be able to query data from the DB and display it.]
+
+1. connect to MySql using the root account
+
+```Bash
+Sudo mysql
+```
+
+2. Create a new database
+```Bash
+mysql > CREATE DATABASE 'example_database';
+```
+
+3. Create user 
+```Bash
+mysql>  CREATE USER 'example_user'@'%' IDENTIFIED WITH mysql_native_password BY *********;
+```
+
+4. Grant full privileges on the database
+```Bash
+mysql> GRANT ALL ON example_database.* TO 'example_user'@'%';
+```
+
+5. Exit
+```Bash
+mysql> exit
+```
+
+6. Test iff the new user has proper permission
+```Bash
+mysql -u example_user -p
+```
+- Confirm you have a ccess to example_database
+
+```Bash
+mysql> SHOW DATABASES;
+```
+
+- create a To do list table
+
+```Bash
+CREATE TABLE example_database.todo_list (
+    item_id INT AUTO_INCREMENT,
+    content VARCHAR(255),
+    PRIMARY KEY(item_id)
+);
+```
+- Insert a few rows of content in the To do list table
+
+
+
+- To Confirm that the data was successfully saved to your table, run:
+```Bash
+mysql>  SELECT * FROM example_database.todo_list;
+```
+
+- create a PHP script that will connect to MySql and query for your content
+```Bash
+$ nano /var/www/projectLEMP/todo_list.php
+```
+
+Copy this into your todo_list.php scripts
+```Bash
+<?php
+$user = "example_user";
+$password = ******;
+$database = "example_database";
+$table = "todo_list";
+
+try {
+  $db = new PDO("mysql:host=localhost;dbname=$database", $user, $password);
+  echo "<h2>TODO</h2><ol>";
+  foreach($db->query("SELECT content FROM $table") as $row) {
+    echo "<li>" . $row['content'] . "</li>";
+  }
+  echo "</ol>";
+} catch (PDOException $e) {
+    print "Error!: " . $e->getMessage() . "<br/>";
+    die();
+}
+```
+
+- You can access this page in your web browser 
+```Bash
+http://54.82.127.210/todo_list.php
+```
+
+
+This means that your PHP environment is ready to connect and interact with your MySQL server
