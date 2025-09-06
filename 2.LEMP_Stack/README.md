@@ -1,7 +1,7 @@
 # Deployment of a LEMP Stack on an AWS EC2 Instance
 
 ## Description
-This project provides a step-bystep guide to installing and configuring and integrating each component of the LEMP stack (Linux, Nginx, Mysql and PHP) ON an AWS EC2 instance. The goal is to set up a fully functional web server environment for deploying applications
+This project provides a step-by-step guide to installing, configuring and integrating each component of the LEMP stack (Linux, Nginx, MySQL and PHP) on an AWS EC2 instance. The goal is to set up a fully functional web server environment for deploying applications
 
 ---
 
@@ -216,6 +216,8 @@ http://<Public-IP-Address>:80
 ```
 ![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/69fd5415ba9a56b1b5c49c44f928b30f967061d0/2.LEMP_Stack/Images/Image%2014.png)  
 
+---
+
 ## Step 6) Testing PHP with Nginx.  
 
 Validate that Nginx can correctly hand .php files off to your PHP processor.  
@@ -240,6 +242,8 @@ phpinfo();>
 ```Bash
 Sudo rm /var/www/54.83.127.210/info.php  
 ```
+
+---
 
 ## Step 7) Retrieving data from MySQL database with PHP  
 
@@ -269,7 +273,7 @@ mysql> GRANT ALL ON example_database.* TO 'example_user'@'%';
 mysql> exit  
 ```
 
-6. Test if the new user has proper permission.
+5. Test if the new user has proper permission.
 ```Bash
 mysql -u example_user -p  
 ```
@@ -280,7 +284,7 @@ mysql> SHOW DATABASES;
 ```
 ![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/69fd5415ba9a56b1b5c49c44f928b30f967061d0/2.LEMP_Stack/Images/Image%2020.png). 
 
-- Create a To-do list table.\ 
+6. Create a To-do list table. 
 
 ```Bash
 CREATE TABLE example_database.todo_list (
@@ -291,17 +295,17 @@ CREATE TABLE example_database.todo_list (
 ```
 ![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/69fd5415ba9a56b1b5c49c44f928b30f967061d0/2.LEMP_Stack/Images/Image%2021.png)  
 
-- Insert a few rows of content in the To-do list table.
+7. Insert a few rows of content in the To-do list table.
 
 ![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/69fd5415ba9a56b1b5c49c44f928b30f967061d0/2.LEMP_Stack/Images/Image%2022.png)  
 
-- To confirm that the data was successfully saved to your table, run:
+8. To confirm that the data was successfully saved to your table, run:
 ```Bash
 mysql>  SELECT * FROM example_database.todo_list;  
 ```
 ![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/69fd5415ba9a56b1b5c49c44f928b30f967061d0/2.LEMP_Stack/Images/Image%2023.png)  
 
-- Create a PHP script that will connect to MySQL and query for your content
+9. Create a PHP script that will connect to MySQL and query for your content
 ```Bash
 $ nano /var/www/projectLEMP/todo_list.php  
 ```
@@ -326,8 +330,7 @@ try {
     die();
 }. 
 ```
-
-- You can access this page in your web browser.
+10. You can access this page in your web browser.
 ```Bash
 http://54.82.127.210/todo_list.php. 
 ```
