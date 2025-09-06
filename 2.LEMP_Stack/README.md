@@ -1,7 +1,7 @@
 # Deployment of a LEMP Stack on an AWS EC2 Instance
 
 ## Description
-This project provides a step-by-step guide to installing, configuring and integrating each component of the LEMP stack (Linux, Nginx, MySQL and PHP) on an AWS EC2 instance. The goal is to set up a fully functional web server environment for deploying applications
+This project provides a step-by-step guide to installing, configuring and integrating each component of the LEMP stack (Linux, Nginx, MySQL and PHP) on an AWS EC2 instance. The goal is to set up a fully functional web server environment for deploying applications.
 
 ---
 
@@ -26,9 +26,9 @@ Allow the following inbound rules:
 
 ## Step 2) Install and Configure NGINX
 
-NGINX is installed to serve your content
+NGINX is installed to serve your content.
 
-1. Update all software and install NGINX
+1. Update all software and install NGINX.
 
 ``` Bash
 sudo apt update
@@ -36,22 +36,22 @@ sudo apt install nginx
 ```
 ![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/69fd5415ba9a56b1b5c49c44f928b30f967061d0/2.LEMP_Stack/Images/Image%202.png)
 
-2. See if NGINX is running
+2. See if NGINX is running.
 
 ```Bash
 sudo apt systemctl status NGINX
 ```
 ![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/69fd5415ba9a56b1b5c49c44f928b30f967061d0/2.LEMP_Stack/Images/Image%203.png)
 
-3. Use the curl command to verify that NGINX is running
+3. Use the curl command to verify that NGINX is running.
 
-The server is now running and can be tested from the local machine using the curl command to send a request to localhost
+The server is now running and can be tested from the local machine using the curl command to send a request to localhost.
 
 ```Bash
 curl http://localhost:80
 ```
 
-NGINX web service responds to the curl command with some payload
+NGINX web service responds to the curl command with some payload.
 
 image
 
@@ -61,7 +61,7 @@ image
 
 ## Step 3) Install and configure MySQL
 
-MySQL is used to store and manage your data
+MySQL is used to store and manage your data.
 
 1. Install MySQL
 
@@ -70,29 +70,29 @@ MySQL is used to store and manage your data
  ```
 ![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/69fd5415ba9a56b1b5c49c44f928b30f967061d0/2.LEMP_Stack/Images/Image%205.png)
 
- 2. Login to MySQL console
- Once the installation has finished, log in to MySQL
+ 2. Login to MySQL console.
+ Once the installation has finished, log in to MySQL.
 
  ```Bash
  sudo mysql
  ```
 ![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/69fd5415ba9a56b1b5c49c44f928b30f967061d0/2.LEMP_Stack/Images/Image%206.png)
 
- This will allow you to navigate the console as the adminstrator user root
+ This will allow you to navigate the console as the administrator user root.
 
-3. Set password for the root user
+3. Set password for the root user.
 
 ```Bash
 ALTERUSER'root'@'localhost' IDENTIFIED WITH mysql_native_password BY'******;
 ```
 
-4. Exit MySQL shell
+4. Exit MySQL shell.
 
 ```Bash
 mysql> exit
 ```
 
-5. Configured the Validate Password plugin
+5. Configured the Validate Password plugin.
 
 ```Bash
 sudo mysql_secure_installation
@@ -112,10 +112,10 @@ Once you're finished with the validation process, test if you're able to login.
 ```Bash
 Sudo mysql -p
 ```
-It will prompt you for the password of the root user
+It will prompt you for the password of the root user.
 ![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/69fd5415ba9a56b1b5c49c44f928b30f967061d0/2.LEMP_Stack/Images/Image%209.png)
 
-Once you've checked, your MySQL server is now installed and secured
+Once you've checked, your MySQL server is now installed and secured.
 
 ---
 
@@ -140,19 +140,19 @@ sudo apt install php-fpm php-mysql
 
 ## step 5) Configuring Nginx to use PHP Processor
 
-1. Create root web director for my domain
+1. Create root web director for my domain.
 
 ```Bash
 sudo mkdir /var/www/projectLEMP
 ```
 
-2. Assign ownership of the directory with the $USER environment variable\
+2. Assign ownership of the directory with the $USER environment variable.
 
 ```Bash
 sudo chown -R $USER:$USER /var/www/projectLEMP
 ```
 
-3. Create a new configuration file in Nginx's sites-available directory
+3. Create a new configuration file in Nginx's sites-available directory.
 
 ```Bash
 sudo nano /etc/nginx/sites-available/projectLEMP
@@ -186,7 +186,7 @@ server {
 }  
 ```
 6. - Activate the configuration  by linking to the config file from Nginx's sites-enabled directory:
-   - Check that Nginx syntax has no errors.\
+   - Check that Nginx syntax has no errors.
 
 ```Bash
 sudo ln -s /etc/nginx/sites-available/projectLEMP /etc/nginx/sites-enabled/  
@@ -218,7 +218,7 @@ http://<Public-IP-Address>:80
 
 ---
 
-## Step 6) Testing PHP with Nginx.  
+## Step 6) Testing PHP with Nginx 
 
 Validate that Nginx can correctly hand .php files off to your PHP processor.  
 
@@ -305,12 +305,12 @@ mysql>  SELECT * FROM example_database.todo_list;
 ```
 ![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/69fd5415ba9a56b1b5c49c44f928b30f967061d0/2.LEMP_Stack/Images/Image%2023.png)  
 
-9. Create a PHP script that will connect to MySQL and query for your content
+9. Create a PHP script that will connect to MySQL and query for your content.
 ```Bash
 $ nano /var/www/projectLEMP/todo_list.php  
 ```
 
-Copy this into your todo_list.php scripts
+Copy this into your todo_list.php scripts.
 ```Bash
 <?php
 $user = "example_user";
@@ -336,4 +336,4 @@ http://54.82.127.210/todo_list.php.
 ```
 ![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/69fd5415ba9a56b1b5c49c44f928b30f967061d0/2.LEMP_Stack/Images/Image%2024.png)  
 
-This means that your PHP environment is ready to connect and interact with your MySQL server 
+This means that your PHP environment is ready to connect and interact with your MySQL server.
