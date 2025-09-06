@@ -34,14 +34,14 @@ NGINX is installed to serve your content
 sudo apt update
 sudo apt install nginx
 ```
-
-image
+![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/69fd5415ba9a56b1b5c49c44f928b30f967061d0/2.LEMP_Stack/Images/Image%202.png)
 
 2. See if NGINX is running
 
 ```Bash
 sudo apt systemctl status NGINX
 ```
+![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/69fd5415ba9a56b1b5c49c44f928b30f967061d0/2.LEMP_Stack/Images/Image%203.png)
 
 3. Use the curl command to verify that NGINX is running
 
@@ -68,14 +68,17 @@ MySQL is used to store and manage your data
 ```Bash
  sudo apt install mysql-server
  ```
+![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/69fd5415ba9a56b1b5c49c44f928b30f967061d0/2.LEMP_Stack/Images/Image%205.png)
 
  2. Login to MySQL console
- Once the installation finished, log into MySQL
+ Once the installation has finished, log in to MySQL
 
  ```Bash
  sudo mysql
  ```
- This will allow you to navigate the console as the adminstratore user root
+![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/69fd5415ba9a56b1b5c49c44f928b30f967061d0/2.LEMP_Stack/Images/Image%206.png)
+
+ This will allow you to navigate the console as the adminstrator user root
 
 3. Set password for the root user
 
@@ -94,7 +97,7 @@ mysql> exit
 ```Bash
 sudo mysql_secure_installation
 ```
-
+![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/69fd5415ba9a56b1b5c49c44f928b30f967061d0/2.LEMP_Stack/Images/Image%207.png)
 
 This goes through a series of steps to validate your password. It will prompt you to:
 - change root password
@@ -104,13 +107,13 @@ This goes through a series of steps to validate your password. It will prompt yo
 
 6. Test login
 
-Once you're finished with the validation process, test if you're able to login
+Once you're finished with the validation process, test if you're able to login.
 
 ```Bash
 Sudo mysql -p
 ```
 It will prompt you for the password of the root user
-
+![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/69fd5415ba9a56b1b5c49c44f928b30f967061d0/2.LEMP_Stack/Images/Image%209.png)
 
 once you've checked, your MySQL server is now installed and secured
 
@@ -122,8 +125,17 @@ PHP processes the code needed to display dynamic content to the end user.
 
 
 ```BASH
- sudo apt install php php-fpm php-msyql
+ sudo apt install php 
  ```
+![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/69fd5415ba9a56b1b5c49c44f928b30f967061d0/2.LEMP_Stack/Images/Image%2010.png)
+
+Then install:
+
+```Bash
+sudo apt install php-fpm php-mysql
+```
+![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/69fd5415ba9a56b1b5c49c44f928b30f967061d0/2.LEMP_Stack/Images/Image%2011.png)
+
 ---
 
 ## step 5) Configuring Nginx to use PHP Processor
@@ -134,13 +146,13 @@ PHP processes the code needed to display dynamic content to the end user.
 sudo mkdir /var/www/projectLEMP
 ```
 
-2. Assign ownership of the directory with the $USER environmen variable
+2. Assign ownership of the directory with the $USER environment variable
 
 ```Bash
 sudo chown -R $USER:$USER /var/www/projectLEMP
 ```
 
-3. Create a new configuration file in Nginx's sites available directory
+3. Create a new configuration file in Nginx's sites-available directory
 
 ```Bash
 sudo nano /etc/nginx/sites-available/projectLEMP
@@ -173,57 +185,52 @@ server {
 
 }
 ```
-6. Activate the configuration  bu linking to the config file from Nginx'x sites-enable directory:
+6. - Activate the configuration  by linking to the config file from Nginx's sites-enabled directory:
+   - Check that Nginx syntax has no errors
 
 ```Bash
 sudo ln -s /etc/nginx/sites-available/projectLEMP /etc/nginx/sites-enabled/
-```
-
-7. Check that Nginx syntaxt has no errors
-
-```Bash
 sudo nginx -t
 ```
+![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/69fd5415ba9a56b1b5c49c44f928b30f967061d0/2.LEMP_Stack/Images/Image%2012.png)
 
-8. Disable default Nginx host that is configured to listen on port 80
-
+8. - Disable default Nginx host that is configured to listen on port 80
+   -  Reload Nginx to apply changes
 ```Bash
 sudo unlink /etc/nginx/sites-enabled/default
-```
-
-9. Reload Nginx to apply changes
-
-```Bash
 sudo systemctl reload nginx
 ```
+![image alt] (https://github.com/RamlaBurhan/ProjectBasedLearning/blob/69fd5415ba9a56b1b5c49c44f928b30f967061d0/2.LEMP_Stack/Images/Image%2013.png)
 
-10. Create an index.html in /var/www/projecLEMP directory to test new server block
+9. Create an index.html in /var/www/projecLEMP directory to test new server block
 
 ```Bash
 sudo echo 'Hello LEMP from hostname' $(TOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"` && curl -H "X-aws-ec2-metadata-token: $TOKEN" -s http://169.254.169.254/latest/meta-data/public-hostname) 'with public IP' $(TOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"` && curl -H "X-aws-ec2-metadata-token: $TOKEN" -s http://169.254.169.254/latest/meta-data/public-ipv4) > /var/www/projectLEMP/index.html
 ```
 
-11. Open website URL using IP addres
+11. Open website URL using IP address
 
 ```Bash
 http://<Public-IP-Address>:80
 ```
+![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/69fd5415ba9a56b1b5c49c44f928b30f967061d0/2.LEMP_Stack/Images/Image%2014.png)
 
 ## Step 6) Testing PHP with Nginx
 
 validate that Nginx can correctly hand .php files off to your PHP processor
 
-1. create a test info.php file
+1. Create a test info.php file
 
 ```Bash
 vi /var/www/projectLEMP/info.php
 ```
+![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/69fd5415ba9a56b1b5c49c44f928b30f967061d0/2.LEMP_Stack/Images/Image%2015.png)
 
-paste the following in the document
+Paste the following in the document:
 <?php
 phpinfo();>
 
-2. Acces page via web browser
+2. Access page via web browser
 
 3. Once checked, remove the info.php file
 
@@ -233,9 +240,9 @@ Sudo rm /var/www/54.83.127.210/info.php
 
 ## Step 7) Retrieving data from MySQL database with PHP
 
-I created a test database (DB) with simple ''To do list'' and configured access to it, so the Nginx website would be able to query data from the DB and display it.]
+I created a test database (DB) with a simple ''To do list'' and configured access to it, so the Nginx website would be able to query data from the DB and display it.]
 
-1. connect to MySql using the root account
+1. Connect to MySQL using the root account
 
 ```Bash
 Sudo mysql
@@ -245,33 +252,32 @@ Sudo mysql
 ```Bash
 mysql > CREATE DATABASE 'example_database';
 ```
+![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/69fd5415ba9a56b1b5c49c44f928b30f967061d0/2.LEMP_Stack/Images/Image%2018.png)
 
-3. Create user 
+3. Create an user and grant full privileges on the database
 ```Bash
 mysql>  CREATE USER 'example_user'@'%' IDENTIFIED WITH mysql_native_password BY *********;
-```
-
-4. Grant full privileges on the database
-```Bash
 mysql> GRANT ALL ON example_database.* TO 'example_user'@'%';
 ```
+![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/69fd5415ba9a56b1b5c49c44f928b30f967061d0/2.LEMP_Stack/Images/Image%2019.png)
 
-5. Exit
+4. Exit
 ```Bash
 mysql> exit
 ```
 
-6. Test iff the new user has proper permission
+6. Test if the new user has proper permission
 ```Bash
 mysql -u example_user -p
 ```
-- Confirm you have a ccess to example_database
+- Confirm you have access to example_database
 
 ```Bash
 mysql> SHOW DATABASES;
 ```
+![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/69fd5415ba9a56b1b5c49c44f928b30f967061d0/2.LEMP_Stack/Images/Image%2020.png)
 
-- create a To do list table
+- Create a To-do list table
 
 ```Bash
 CREATE TABLE example_database.todo_list (
@@ -280,16 +286,19 @@ CREATE TABLE example_database.todo_list (
     PRIMARY KEY(item_id)
 );
 ```
-- Insert a few rows of content in the To do list table
+![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/69fd5415ba9a56b1b5c49c44f928b30f967061d0/2.LEMP_Stack/Images/Image%2021.png)
 
+- Insert a few rows of content in the To-do list table
 
+![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/69fd5415ba9a56b1b5c49c44f928b30f967061d0/2.LEMP_Stack/Images/Image%2022.png)
 
-- To Confirm that the data was successfully saved to your table, run:
+- To confirm that the data was successfully saved to your table, run:
 ```Bash
 mysql>  SELECT * FROM example_database.todo_list;
 ```
+![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/69fd5415ba9a56b1b5c49c44f928b30f967061d0/2.LEMP_Stack/Images/Image%2023.png)
 
-- create a PHP script that will connect to MySql and query for your content
+- Create a PHP script that will connect to MySQL and query for your content
 ```Bash
 $ nano /var/www/projectLEMP/todo_list.php
 ```
@@ -310,7 +319,7 @@ try {
   }
   echo "</ol>";
 } catch (PDOException $e) {
-    print "Error!: " . $e->getMessage() . "<br/>";
+    print "Error!: ". $e->getMessage() . "<br/>";
     die();
 }
 ```
@@ -319,6 +328,6 @@ try {
 ```Bash
 http://54.82.127.210/todo_list.php
 ```
-
+![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/69fd5415ba9a56b1b5c49c44f928b30f967061d0/2.LEMP_Stack/Images/Image%2024.png)
 
 This means that your PHP environment is ready to connect and interact with your MySQL server
