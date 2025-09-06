@@ -200,7 +200,8 @@ sudo nginx -t.
 sudo unlink /etc/nginx/sites-enabled/default. 
 sudo systemctl reload nginx. 
 ```
-![image alt] (https://github.com/RamlaBurhan/ProjectBasedLearning/blob/69fd5415ba9a56b1b5c49c44f928b30f967061d0/2.LEMP_Stack/Images/Image%2013.png). 
+
+![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/69fd5415ba9a56b1b5c49c44f928b30f967061d0/2.LEMP_Stack/Images/Image%2013.png)  
 
 9. Create an index.html in /var/www/projecLEMP directory to test new server block.
 
@@ -208,47 +209,49 @@ sudo systemctl reload nginx.
 sudo echo 'Hello LEMP from hostname' $(TOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"` && curl -H "X-aws-ec2-metadata-token: $TOKEN" -s http://169.254.169.254/latest/meta-data/public-hostname) 'with public IP' $(TOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"` && curl -H "X-aws-ec2-metadata-token: $TOKEN" -s http://169.254.169.254/latest/meta-data/public-ipv4) > /var/www/projectLEMP/index.html. 
 ```
 
-11. Open website URL using IP address.
+11. Open website URL using IP address.  
 
 ```Bash
 http://<Public-IP-Address>:80  
 ```
 ![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/69fd5415ba9a56b1b5c49c44f928b30f967061d0/2.LEMP_Stack/Images/Image%2014.png)  
 
-## Step 6) Testing PHP with Nginx.
+## Step 6) Testing PHP with Nginx.  
 
-Validate that Nginx can correctly hand .php files off to your PHP processor.
+Validate that Nginx can correctly hand .php files off to your PHP processor.  
 
-1. Create a test info.php file.
+1. Create a test info.php file.  
 
 ```Bash
-vi /var/www/projectLEMP/info.php  
+vi /var/www/projectLEMP/info.php    
 ```
 ![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/69fd5415ba9a56b1b5c49c44f928b30f967061d0/2.LEMP_Stack/Images/Image%2015.png)  
 
-Paste the following in the document:
+Paste the following in the document:  
+```Bash
 <?php
-phpinfo();>  
+phpinfo();>
+```  
 
-2. Access page via web browser.
+2. Access page via web browser.    
 
-3. Once checked, remove the info.php file.
+3. Once checked, remove the info.php file.    
 
 ```Bash
 Sudo rm /var/www/54.83.127.210/info.php  
 ```
 
-## Step 7) Retrieving data from MySQL database with PHP
+## Step 7) Retrieving data from MySQL database with PHP  
 
-I created a test database (DB) with a simple ''To do list'' and configured access to it, so the Nginx website would be able to query data from the DB and display it.]  
+I created a test database (DB) with a simple ''To-do list'' and configured access to it, so the Nginx website would be able to query data from the DB and display it. 
 
-1. Connect to MySQL using the root account.
+1. Connect to MySQL using the root account.  
 
 ```Bash
-Sudo mysql  
-```
+Sudo mysql   
+```  
 
-2. Create a new database.
+2. Create a new database.  
 ```Bash
 mysql > CREATE DATABASE 'example_database';  
 ```
