@@ -192,7 +192,7 @@ server {
 sudo ln -s /etc/nginx/sites-available/projectLEMP /etc/nginx/sites-enabled/
 sudo nginx -t
 ```
-![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/69fd5415ba9a56b1b5c49c44f928b30f967061d0/2.LEMP_Stack/Images/Image%2012.png)
+![image alt](https://github.com/RamlaBurhan/ProjectBasedLearning/blob/be0848fd62d401651cfbbc4240bdb1b7e1892b5e/2.LEMP_Stack/Images/Image%2013.png)
 
 8. - Disable default Nginx host that is configured to listen on port 80
    -  Reload Nginx to apply changes
